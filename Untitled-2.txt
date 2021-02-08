@@ -1,0 +1,21 @@
+//Mes selecteurs
+
+var mybutton = document.getElementById("mybutton");
+var liste = document.getElementById("liste");
+
+//Mes variables
+
+var films = [];
+
+//mes evenements
+
+mybutton.addEventListener('click' ,function(){
+  fetch("https://ghibliapi.herokuapp.com/films")
+  .then(reponse => reponse.json())
+  .then(data => films = data);
+  
+  
+  for (let film of films){
+    liste.innerHTML += "<li>" + film.title + "</li><br>"
+  }
+})
